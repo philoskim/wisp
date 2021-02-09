@@ -1,0 +1,54 @@
+= my doc
+:sectnums:
+
+== Install
+
+다음을 실행하면 모든 .wisp 파일이 자동으로 컴파일된다.
+ 
+[listing]
+----
+$ yarn install
+----
+
+``$ npm install``으로 실행하면 다음과 같은 에러가 발생하고 있다. 하지만 ``yarn``으로
+설치하면 문제가 발생하지 않는다.
+
+[listing]
+----
+error No versions available for esprima-moz
+----
+
+
+== Running in a browser
+
+[listing]
+.dist/index.html
+----
+<script src="wisp.js"></script>
+
+<script type="application/wisp">
+  (alert "Hello world!")
+</script>
+
+<!-- Load from a file: -->
+<script type="application/wisp" src="my-script.wisp"></script>
+----
+
+위의 파일을 실행하면 다음과 같은 에러가 발생한다.
+
+[listing]
+----
+wisp.js:104 Uncaught SyntaxError: Invalid or unexpected token (wisp.js:104)
+----
+
+미봉책이지만, wisp.js 파일과 wisp.min.js 파일 내의 'ø' --> '0' 으로 모두 치환해 주면,
+문제가 해결된다.
+
+[listing]
+----
+$ find . -type f -exec sed -i 's/ø/0/g' {} +
+----
+
+
+
+
