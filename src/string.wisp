@@ -1,6 +1,7 @@
 (ns wisp.string
   (:require [wisp.runtime :refer [fn? str subs re-matches nil? string? re-pattern? dec max]]
             [wisp.sequence :refer [seq lazy-seq vec conj cons first rest take count empty?]]))
+;; clojure.string에 해당
 
 (def
   ^{:doc "Returns all matches of pattern occurring in string (as is)"}
@@ -21,7 +22,9 @@
        0 #_"keeping track of removed prefix length"))))
 
 (defn- clojure-split [string pattern limit]
-  (loop [matches (take (dec limit) (re-find-all pattern string)),  res [],  index 0]
+  (loop [matches (take (dec limit) (re-find-all pattern string))
+         res []
+         index 0]
     (if (empty? matches)
       (conj res (subs string index))
       (let [x (first matches)]

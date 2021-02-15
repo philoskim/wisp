@@ -18,7 +18,6 @@ $ yarn install
 error No versions available for esprima-moz
 ----
 
-
 == Running in a browser
 
 [listing]
@@ -50,5 +49,19 @@ $ find . -type f -exec sed -i 's/ø/0/g' {} +
 ----
 
 
+다음과 같이 코드를 수정해 준 후, 재컴파일하면 문제가 해결된다. 
+
+[source]
+.src/backend/escodegen/writer.wisp
+....
+;(def **unique-char** "\u00F8")
+(def **unique-char** "_")
+....
+
+
+[listing]
+----
+$ make all
+----
 
 

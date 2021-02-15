@@ -20,7 +20,8 @@
 ;; Define character that is valid JS identifier that will
 ;; be used in generated symbols to avoid conflicts
 ;; http://www.fileformat.info/info/unicode/char/f8/index.htm
-(def **unique-char** "\u00F8")
+;(def **unique-char** "\u00F8")
+(def **unique-char** "_")
 
 (defn ->camel-join
   "Takes dash delimited name "

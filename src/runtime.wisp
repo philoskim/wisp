@@ -1,6 +1,6 @@
 (ns wisp.runtime
   "Core primitives required for runtime")
-
+;; clojure.core에 해당
 
 (def ^:private -wisp-types
   (Object.freeze
@@ -47,6 +47,7 @@
                         (aget target key)
                         default*)))
 
+;; dictionary == js/Object
 (defn ^boolean dictionary?
   "Returns true if dictionary"
   [form]
